@@ -5,15 +5,13 @@ import 'components/elevatedButton.dart';
 import 'components/textButton.dart';
 import 'components/textField.dart';
 
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 class LoginPage6 extends StatelessWidget {
   const LoginPage6({super.key});
 
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.width;
+
     double _canPadding = 20.0;
     double _canMargin = 20.0;
     double _elevationValue = 0;
