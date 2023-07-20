@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'componenets/elevatedButton.dart';
-import 'componenets/iconButton.dart';
-import 'componenets/textButton.dart';
-import 'componenets/textField.dart';
+import 'components/elevatedButton.dart';
+import 'components/iconButton.dart';
+import 'components/textButton.dart';
+import 'components/textField.dart';
 
 class LoginPage7 extends StatelessWidget {
   const LoginPage7({super.key});
