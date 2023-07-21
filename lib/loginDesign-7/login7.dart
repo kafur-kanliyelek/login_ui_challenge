@@ -11,6 +11,7 @@ class LoginPage7 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isKeyboard = MediaQuery.of(context).viewInsets.bottom != 0;
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -19,69 +20,77 @@ class LoginPage7 extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              width: 150,
-              height: 150,
-              decoration: const BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('assets/png/logo7.png'))),
-            ),
-            Text(
-              _ProjectText().uiMaster,
-              style: _myTextStyle7(),
-            ),
-            Container(
-              height: 10,
-              width: 60,
-              decoration: BoxDecoration(
-                  color: _ProjectColors().dividerColor,
-                  borderRadius: BorderRadius.circular(30)),
-            ),
-            Text(
-              _ProjectText().login,
-              style: _myTextStyle7(),
-            ),
-            myTextField7(
-                hintText: _ProjectText().userName,
-                hintColor: _ProjectColors().hintColor,
-                borderColor: _ProjectColors().hintColor),
-            myTextField7(
-                hintText: _ProjectText().password,
-                hintColor: _ProjectColors().hintColor,
-                borderColor: _ProjectColors().hintColor),
-            myElevatedButton7(
-              btnText: _ProjectText().login,
-              fontFamily: 'Lunasima',
-              btnGradientColor1: _ProjectColors().rightBtnColor,
-              btnGradientColor2: _ProjectColors().leftBtnColor,
-            ),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        child: CustomScrollView(scrollDirection: Axis.vertical, slivers: [
+          SliverFillRemaining(
+            hasScrollBody: false,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                myIconButton7(
-                  btnIcon: _ProjectIcons().google,
-                  iconColor: _ProjectColors().googleIcon,
+                Visibility(
+                  visible: !isKeyboard,
+                  child: Container(
+                    width: 150,
+                    height: 150,
+                    decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/png/logo7.png'))),
+                  ),
                 ),
-                myIconButton7(
-                  btnIcon: _ProjectIcons().facebook,
-                  iconColor: _ProjectColors().facebookIcon,
+                Text(
+                  _ProjectText().uiMaster,
+                  style: _myTextStyle7(),
                 ),
-                myIconButton7(
-                  btnIcon: _ProjectIcons().twitter,
-                  iconColor: _ProjectColors().twitterIcon,
+                Container(
+                  height: 10,
+                  width: 60,
+                  decoration: BoxDecoration(
+                      color: _ProjectColors().dividerColor,
+                      borderRadius: BorderRadius.circular(30)),
+                ),
+                Text(
+                  _ProjectText().login,
+                  style: _myTextStyle7(),
+                ),
+                myTextField7(
+                    hintText: _ProjectText().userName,
+                    hintColor: _ProjectColors().hintColor,
+                    borderColor: _ProjectColors().hintColor),
+                myTextField7(
+                    hintText: _ProjectText().password,
+                    hintColor: _ProjectColors().hintColor,
+                    borderColor: _ProjectColors().hintColor),
+                myElevatedButton7(
+                  btnText: _ProjectText().login,
+                  fontFamily: 'Lunasima',
+                  btnGradientColor1: _ProjectColors().rightBtnColor,
+                  btnGradientColor2: _ProjectColors().leftBtnColor,
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    myIconButton7(
+                      btnIcon: _ProjectIcons().google,
+                      iconColor: _ProjectColors().googleIcon,
+                    ),
+                    myIconButton7(
+                      btnIcon: _ProjectIcons().facebook,
+                      iconColor: _ProjectColors().facebookIcon,
+                    ),
+                    myIconButton7(
+                      btnIcon: _ProjectIcons().twitter,
+                      iconColor: _ProjectColors().twitterIcon,
+                    ),
+                  ],
+                ),
+                myTextButton7(
+                  btnText: _ProjectText().register,
+                  textColor: _ProjectColors().registerColor,
                 ),
               ],
             ),
-            myTextButton7(
-              btnText: _ProjectText().register,
-              textColor: _ProjectColors().registerColor,
-            ),
-          ],
-        ),
+          )
+        ]),
       ),
     );
   }
@@ -95,7 +104,7 @@ class _ProjectText {
   String login = 'LOGIN';
   String userName = 'Username';
   String password = 'Password';
-  String register = 'I dont\'t have an account? Register';
+  String register = 'I don\'t have an account? Register';
 }
 
 class _ProjectColors {

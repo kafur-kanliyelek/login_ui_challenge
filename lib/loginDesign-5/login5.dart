@@ -13,6 +13,7 @@ class LoginPage5 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isKeyboard = MediaQuery.of(context).viewInsets.bottom != 0;
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -20,7 +21,9 @@ class LoginPage5 extends StatelessWidget {
         alignment: Alignment.bottomCenter,
         children: [
           myContainer5(
-            canColor: _ProjectColors.secondWhite,
+            canColor: isKeyboard
+                ? _ProjectColors.secondBlue
+                : _ProjectColors.secondWhite,
             canHeight: double.infinity,
             canWidth: double.infinity,
             child: Column(
@@ -41,11 +44,14 @@ class LoginPage5 extends StatelessWidget {
                               _ProjectColors.rightBlue,
                             ]).createShader(bounds);
                       },
-                      child: Icon(
-                        FontAwesomeIcons.featherPointed,
-                        //Icons.star,
-                        size: screenHeight * 0.12,
-                        color: _ProjectColors.leftBlue,
+                      child: Visibility(
+                        visible: !isKeyboard,
+                        child: Icon(
+                          FontAwesomeIcons.featherPointed,
+                          //Icons.star,
+                          size: screenHeight * 0.12,
+                          color: _ProjectColors.leftBlue,
+                        ),
                       ),
                     )),
                 Spacer(
@@ -54,116 +60,120 @@ class LoginPage5 extends StatelessWidget {
               ],
             ),
           ),
-          myContainer5(
-            canColor: _ProjectColors.rightBlue,
-            canHeight: screenHeight * 0.5,
-            canWidth: double.infinity,
-            canMargin: EdgeInsets.symmetric(horizontal: screenWidth * 0.03),
-            canrborderRadius: BorderRadius.only(
-                topLeft: Radius.circular(30), topRight: Radius.circular(30)),
-            canGradient: LinearGradient(
-                begin: Alignment.centerLeft,
-                end: Alignment.centerRight,
-                colors: [_ProjectColors.leftBlue, _ProjectColors.rightBlue]),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Spacer(
-                  flex: 50,
-                ),
-                Expanded(
-                  flex: 10,
-                  child: Row(
-                    children: [
-                      Spacer(
-                        flex: 25,
-                      ),
-                      Expanded(
-                        flex: 20,
-                        child: Divider(
-                          thickness: 3,
-                          color: Colors.white,
+          Visibility(
+            visible: !isKeyboard,
+            child: myContainer5(
+              canColor: _ProjectColors.rightBlue,
+              canHeight: screenHeight * 0.5,
+              canWidth: double.infinity,
+              canMargin: EdgeInsets.symmetric(horizontal: screenWidth * 0.03),
+              canrborderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30), topRight: Radius.circular(30)),
+              canGradient: LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                  colors: [_ProjectColors.leftBlue, _ProjectColors.rightBlue]),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Spacer(
+                    flex: 50,
+                  ),
+                  Expanded(
+                    flex: 10,
+                    child: Row(
+                      children: [
+                        Spacer(
+                          flex: 25,
                         ),
-                      ),
-                      Expanded(
-                        flex: 10,
-                        child: Center(
-                          child: Text(
-                            'OR',
-                            style: TextStyle(
-                              color: Colors.white,
+                        Expanded(
+                          flex: 20,
+                          child: Divider(
+                            thickness: 3,
+                            color: Colors.white,
+                          ),
+                        ),
+                        Expanded(
+                          flex: 10,
+                          child: Center(
+                            child: Text(
+                              'OR',
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      Expanded(
-                        flex: 20,
-                        child: Divider(
-                          thickness: 3,
-                          color: Colors.white,
-                        ),
-                      ),
-                      Spacer(
-                        flex: 25,
-                      )
-                    ],
-                  ),
-                ),
-                Expanded(
-                  flex: 30,
-                  child: Stack(
-                    //fit: StackFit.expand,
-                    alignment: Alignment.center,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          myLoginWidget5(
-                            screenWidth: screenWidth,
-                            loginIcon: _ProjectIcons.facebook,
-                            alignIcon: Alignment.centerLeft,
-                            iconColor: _ProjectColors.facebookIcon,
-                            canHeight: 50,
-                            iconSize: 45,
-                          ),
-                          myLoginWidget5(
-                            screenWidth: screenWidth,
-                            loginIcon: _ProjectIcons.googlePlus,
-                            alignIcon: Alignment.centerRight,
-                            iconColor: _ProjectColors.googleIcon,
-                            canHeight: 50,
-                            iconSize: 45,
-                          ),
-                        ],
-                      ),
-                      Align(
-                        alignment: Alignment.center,
-                        child: Container(
-                          width: 100,
-                          height: 80,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.white,
-                              border: Border.all(
-                                  color: _ProjectColors.secondBlue, width: 3)),
-                          child: Icon(
-                            Icons.fingerprint_outlined,
-                            size: 50,
-                            color: _ProjectColors.secondBlue,
+                        Expanded(
+                          flex: 20,
+                          child: Divider(
+                            thickness: 3,
+                            color: Colors.white,
                           ),
                         ),
-                      ),
-                    ],
+                        Spacer(
+                          flex: 25,
+                        )
+                      ],
+                    ),
                   ),
-                ),
-                Expanded(
-                  flex: 10,
-                  child: myTextButton5(
-                      btnText: _ProjectText.dontHave,
-                      textColor: _ProjectColors.white),
-                )
-              ],
+                  Expanded(
+                    flex: 30,
+                    child: Stack(
+                      //fit: StackFit.expand,
+                      alignment: Alignment.center,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            myLoginWidget5(
+                              screenWidth: screenWidth,
+                              loginIcon: _ProjectIcons.facebook,
+                              alignIcon: Alignment.centerLeft,
+                              iconColor: _ProjectColors.facebookIcon,
+                              canHeight: 50,
+                              iconSize: 45,
+                            ),
+                            myLoginWidget5(
+                              screenWidth: screenWidth,
+                              loginIcon: _ProjectIcons.googlePlus,
+                              alignIcon: Alignment.centerRight,
+                              iconColor: _ProjectColors.googleIcon,
+                              canHeight: 50,
+                              iconSize: 45,
+                            ),
+                          ],
+                        ),
+                        Align(
+                          alignment: Alignment.center,
+                          child: Container(
+                            width: 100,
+                            height: 80,
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.white,
+                                border: Border.all(
+                                    color: _ProjectColors.secondBlue,
+                                    width: 3)),
+                            child: Icon(
+                              Icons.fingerprint_outlined,
+                              size: 50,
+                              color: _ProjectColors.secondBlue,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    flex: 10,
+                    child: myTextButton5(
+                        btnText: _ProjectText.dontHave,
+                        textColor: _ProjectColors.white),
+                  )
+                ],
+              ),
             ),
           ),
           Align(

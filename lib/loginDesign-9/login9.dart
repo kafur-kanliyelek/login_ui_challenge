@@ -27,130 +27,136 @@ class LoginPage9 extends StatelessWidget {
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: _generalPadding),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            ClipPath(
-              clipper: MyCustomClipper(),
-              child: Container(
-                height: screenHeight * 0.6,
-                padding: EdgeInsets.zero,
-                decoration: BoxDecoration(
-                    color: _ProjectColors().white,
-                    borderRadius: BorderRadius.circular(_canRadiusCircular)),
-                child: Padding(
-                  padding: EdgeInsets.only(
-                    top: _canPadding,
-                    left: _canPadding,
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            _ProjectText().login,
-                            style: GoogleFonts.jost(
-                              textStyle: const TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 32,
-                              ),
-                            ),
-                          )),
-                      Padding(
-                        padding: EdgeInsets.only(right: _canPadding),
-                        child: myTextField9(
-                          obscure: false,
-                          labelText: _ProjectText().email,
-                          keyboardType: TextInputType.emailAddress,
-                          hintColor: _ProjectColors().hintColor,
-                          primaryColor: _ProjectColors().primary,
-                        ),
+        child: CustomScrollView(slivers: [
+          SliverFillRemaining(
+            hasScrollBody: false,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ClipPath(
+                  clipper: MyCustomClipper(),
+                  child: Container(
+                    height: screenHeight * 0.6,
+                    padding: EdgeInsets.zero,
+                    decoration: BoxDecoration(
+                        color: _ProjectColors().white,
+                        borderRadius:
+                            BorderRadius.circular(_canRadiusCircular)),
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                        top: _canPadding,
+                        left: _canPadding,
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(right: _canPadding),
-                        child: Column(
-                          children: [
-                            myTextField9(
-                              obscure: true,
-                              labelText: _ProjectText().password,
-                              keyboardType: TextInputType.visiblePassword,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                _ProjectText().login,
+                                style: GoogleFonts.jost(
+                                  textStyle: const TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 32,
+                                  ),
+                                ),
+                              )),
+                          Padding(
+                            padding: EdgeInsets.only(right: _canPadding),
+                            child: myTextField9(
+                              obscure: false,
+                              labelText: _ProjectText().email,
+                              keyboardType: TextInputType.emailAddress,
                               hintColor: _ProjectColors().hintColor,
-                              suffixIcon: _ProjectIcons().eye,
                               primaryColor: _ProjectColors().primary,
                             ),
-                            myTextButton9(
-                              btnText: _ProjectText().forgotPass,
-                              alignment: Alignment.centerRight,
-                              textColor: _ProjectColors().hintColor,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(right: _canPadding),
+                            child: Column(
+                              children: [
+                                myTextField9(
+                                  obscure: true,
+                                  labelText: _ProjectText().password,
+                                  keyboardType: TextInputType.visiblePassword,
+                                  hintColor: _ProjectColors().hintColor,
+                                  suffixIcon: _ProjectIcons().eye,
+                                  primaryColor: _ProjectColors().primary,
+                                ),
+                                myTextButton9(
+                                  btnText: _ProjectText().forgotPass,
+                                  alignment: Alignment.centerRight,
+                                  textColor: _ProjectColors().hintColor,
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              myIconButton9(
+                                icon: _ProjectIcons().rightArrow,
+                                iconColor: _ProjectColors().black,
+                                canColor: _ProjectColors().transparent,
+                              ),
+                            ],
+                          )
+                        ],
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                    ),
+                  ),
+                ),
+                Transform.rotate(
+                  angle: _angle,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: _canPadding),
+                    child: Align(
+                      alignment: Alignment.topLeft,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          myIconButton9(
-                            icon: _ProjectIcons().rightArrow,
-                            iconColor: _ProjectColors().black,
-                            canColor: _ProjectColors().transparent,
+                          Transform.rotate(
+                            angle: -_angle,
+                            child: myIconButton9(
+                              icon: _ProjectIcons().facebook,
+                              iconColor: _ProjectColors().primary,
+                              canColor: _ProjectColors().white,
+                            ),
+                          ),
+                          Transform.rotate(
+                            angle: -_angle,
+                            child: myIconButton9(
+                              icon: _ProjectIcons().linkedin,
+                              iconColor: _ProjectColors().primary,
+                              canColor: _ProjectColors().white,
+                            ),
+                          ),
+                          Transform.rotate(
+                            angle: -_angle,
+                            child: myIconButton9(
+                              icon: _ProjectIcons().twitter,
+                              iconColor: _ProjectColors().primary,
+                              canColor: _ProjectColors().white,
+                            ),
                           ),
                         ],
-                      )
-                    ],
+                      ),
+                    ),
                   ),
                 ),
-              ),
+                Spacer(),
+                Align(
+                    alignment: Alignment.bottomCenter,
+                    child: myTextButton9(
+                      btnText: _ProjectText().signUp,
+                      alignment: Alignment.bottomCenter,
+                      textColor: _ProjectColors().white,
+                    )),
+              ],
             ),
-            Transform.rotate(
-              angle: _angle,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: _canPadding),
-                child: Align(
-                  alignment: Alignment.topLeft,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Transform.rotate(
-                        angle: -_angle,
-                        child: myIconButton9(
-                          icon: _ProjectIcons().facebook,
-                          iconColor: _ProjectColors().primary,
-                          canColor: _ProjectColors().white,
-                        ),
-                      ),
-                      Transform.rotate(
-                        angle: -_angle,
-                        child: myIconButton9(
-                          icon: _ProjectIcons().linkedin,
-                          iconColor: _ProjectColors().primary,
-                          canColor: _ProjectColors().white,
-                        ),
-                      ),
-                      Transform.rotate(
-                        angle: -_angle,
-                        child: myIconButton9(
-                          icon: _ProjectIcons().twitter,
-                          iconColor: _ProjectColors().primary,
-                          canColor: _ProjectColors().white,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Spacer(),
-            Align(
-                alignment: Alignment.bottomCenter,
-                child: myTextButton9(
-                  btnText: _ProjectText().signUp,
-                  alignment: Alignment.bottomCenter,
-                  textColor: _ProjectColors().white,
-                )),
-          ],
-        ),
+          )
+        ]),
       ),
     );
   }

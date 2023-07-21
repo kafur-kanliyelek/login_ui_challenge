@@ -27,57 +27,59 @@ class LoginPage2 extends StatelessWidget {
       ),
       body: Padding(
         padding: EdgeInsets.only(left: generalPadding, right: generalPadding),
-        child: Column(
-          children: [
-            Column(
-              children: [
-                textField2(
-                  labelText: _ProjectText.emailAdress,
-                  labelColor: _ProjectColors.projecthintText,
-                ),
-                textField2(
-                  labelText: _ProjectText.password,
-                  labelColor: _ProjectColors.projecthintText,
-                  rightIcon: rightIcon,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Checkbox(
-                          value: true,
-                          onChanged: null,
-                          fillColor: MaterialStateColor.resolveWith(
-                              (states) => _ProjectColors.projectBlueMtr),
-                        ),
-                        Text(
-                          _ProjectText.rememberMe,
-                          style:
-                              TextStyle(color: _ProjectColors.projecthintText),
-                        ),
-                      ],
-                    ),
-                    TextButton2(
-                        btnText: _ProjectText.forget,
-                        btnColor: _ProjectColors.projectBlue),
-                  ],
-                ),
-                myElevatedButton2(
-                    btnColor: _ProjectColors.projectBlue,
-                    btnText: _ProjectText.login),
-              ],
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                top: (myMediaQuerySize / 100) * (15),
-                bottom: (myMediaQuerySize / 100) * (15),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Column(
+                children: [
+                  textField2(
+                    labelText: _ProjectText.emailAdress,
+                    labelColor: _ProjectColors.projecthintText,
+                  ),
+                  textField2(
+                    labelText: _ProjectText.password,
+                    labelColor: _ProjectColors.projecthintText,
+                    rightIcon: rightIcon,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Checkbox(
+                            value: true,
+                            onChanged: null,
+                            fillColor: MaterialStateColor.resolveWith(
+                                (states) => _ProjectColors.projectBlueMtr),
+                          ),
+                          Text(
+                            _ProjectText.rememberMe,
+                            style: TextStyle(
+                                color: _ProjectColors.projecthintText),
+                          ),
+                        ],
+                      ),
+                      TextButton2(
+                          btnText: _ProjectText.forget,
+                          btnColor: _ProjectColors.projectBlue),
+                    ],
+                  ),
+                  myElevatedButton2(
+                      btnColor: _ProjectColors.projectBlue,
+                      btnText: _ProjectText.login),
+                ],
               ),
-              child: TextButton2(
-                  btnText: _ProjectText.signUp,
-                  btnColor: _ProjectColors.projectBlue),
-            ),
-          ],
+              Padding(
+                padding: EdgeInsets.only(
+                  top: (myMediaQuerySize / 100) * (15),
+                  bottom: (myMediaQuerySize / 100) * (15),
+                ),
+                child: TextButton2(
+                    btnText: _ProjectText.signUp,
+                    btnColor: _ProjectColors.projectBlue),
+              ),
+            ],
+          ),
         ),
       ),
     );

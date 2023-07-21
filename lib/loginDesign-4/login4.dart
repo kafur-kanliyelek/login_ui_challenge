@@ -9,6 +9,7 @@ class LoginPage4 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isKeyboard = MediaQuery.of(context).viewInsets.bottom != 0;
     double _paddingValue = 20.0;
     double _containerHeight = 300.0;
     double _fontSize = 6.0;
@@ -26,11 +27,14 @@ class LoginPage4 extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Container(
-                decoration: BoxDecoration(
-                    shape: BoxShape.rectangle,
-                    image: DecorationImage(image: AssetImage(_assetPath))),
-                height: _containerHeight,
+              Visibility(
+                visible: !isKeyboard,
+                child: Container(
+                  decoration: BoxDecoration(
+                      shape: BoxShape.rectangle,
+                      image: DecorationImage(image: AssetImage(_assetPath))),
+                  height: _containerHeight,
+                ),
               ),
               Align(
                 alignment: Alignment.centerLeft,

@@ -11,6 +11,7 @@ class LoginPage10 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isKeyboard = MediaQuery.of(context).viewInsets.bottom != 0;
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     double elevationValue = 0;
@@ -25,136 +26,148 @@ class LoginPage10 extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Container(
-              padding: EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: _ProjectColors().white.withOpacity(0.1),
-                  border: Border.all(
-                      color: _ProjectColors().white.withOpacity(0.6))),
-              child: Transform.rotate(
-                  angle: 0.8,
-                  child: Icon(
-                    _ProjectIcons().plane,
-                    size: 60,
-                    color: _ProjectColors().white,
-                  )),
-            ),
-            Spacer(),
-            Stack(
-              alignment: Alignment.topCenter,
-              clipBehavior: Clip.none,
+        child: CustomScrollView(reverse: false, slivers: [
+          SliverFillRemaining(
+            hasScrollBody: false,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Container(
-                  height: screenHeight * 0.6,
-                  padding: EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                      color: _ProjectColors().secondary,
-                      borderRadius: BorderRadius.circular(socialCanRadius)),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text(
-                        _ProjectText().loginFast,
-                        style: TextStyle(
-                            color: _ProjectColors().white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      myTextField10(
-                        keyboardType: TextInputType.emailAddress,
-                        labelText: _ProjectText().email,
-                        color: _ProjectColors().white,
-                        obscure: false,
-                      ),
-                      myTextField10(
-                        keyboardType: TextInputType.number,
-                        obscure: true,
-                        labelText: _ProjectText().password,
-                        suffixIcon: _ProjectIcons().eye,
-                        color: _ProjectColors().white,
-                      ),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: myTextButton10(
-                          btnText: _ProjectText().forgotPass,
-                          textColor: _ProjectColors().white,
-                        ),
-                      ),
-                      myElevatedButton10(
-                          btnText: _ProjectText().login,
-                          btnColor: _ProjectColors().third,
-                          textColor: _ProjectColors().white),
-                      Row(
+                Visibility(
+                  visible: !isKeyboard,
+                  child: Container(
+                    padding: EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: _ProjectColors().white.withOpacity(0.1),
+                        border: Border.all(
+                            color: _ProjectColors().white.withOpacity(0.6))),
+                    child: Transform.rotate(
+                        angle: 0.8,
+                        child: Icon(
+                          _ProjectIcons().plane,
+                          size: 60,
+                          color: _ProjectColors().white,
+                        )),
+                  ),
+                ),
+                Spacer(),
+                Stack(
+                  alignment: Alignment.topCenter,
+                  clipBehavior: Clip.none,
+                  children: [
+                    Container(
+                      height: screenHeight * 0.6,
+                      padding: EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                          color: _ProjectColors().secondary,
+                          borderRadius: BorderRadius.circular(socialCanRadius)),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Expanded(
-                            child: MyDivider(0.0, 20.0),
-                          ),
                           Text(
-                            _ProjectText().continueWith,
-                            style: TextStyle(color: _ProjectColors().white),
+                            _ProjectText().loginFast,
+                            style: TextStyle(
+                                color: _ProjectColors().white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500),
                           ),
-                          Expanded(child: MyDivider(20.0, 0.0)),
+                          myTextField10(
+                            keyboardType: TextInputType.emailAddress,
+                            labelText: _ProjectText().email,
+                            color: _ProjectColors().white,
+                            obscure: false,
+                          ),
+                          myTextField10(
+                            keyboardType: TextInputType.number,
+                            obscure: true,
+                            labelText: _ProjectText().password,
+                            suffixIcon: _ProjectIcons().eye,
+                            color: _ProjectColors().white,
+                          ),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: myTextButton10(
+                              btnText: _ProjectText().forgotPass,
+                              textColor: _ProjectColors().white,
+                            ),
+                          ),
+                          myElevatedButton10(
+                              btnText: _ProjectText().login,
+                              btnColor: _ProjectColors().third,
+                              textColor: _ProjectColors().white),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: MyDivider(0.0, 20.0),
+                              ),
+                              Text(
+                                _ProjectText().continueWith,
+                                style: TextStyle(color: _ProjectColors().white),
+                              ),
+                              Expanded(child: MyDivider(20.0, 0.0)),
+                            ],
+                          ),
+                          Container(
+                            height: socialCanHeight,
+                            width:
+                                (socialCanHeight * 3) + (socialCanPadding * 2),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: socialCanPadding),
+                            decoration: BoxDecoration(
+                              color: _ProjectColors().fourth,
+                              borderRadius: BorderRadius.all(
+                                  Radius.circular(socialCanRadius)),
+                            ),
+                            child: Row(
+                              children: [
+                                myIconButton10(
+                                  icon: _ProjectIcons().google,
+                                  iconColor: _ProjectColors().white,
+                                ),
+                                MyVerticalDivider(),
+                                myIconButton10(
+                                  icon: _ProjectIcons().facebook,
+                                  iconColor: _ProjectColors().white,
+                                ),
+                                MyVerticalDivider(),
+                                myIconButton10(
+                                  icon: _ProjectIcons().twitter,
+                                  iconColor: _ProjectColors().white,
+                                ),
+                              ],
+                            ),
+                          )
                         ],
                       ),
-                      Container(
-                        height: socialCanHeight,
-                        width: (socialCanHeight * 3) + (socialCanPadding * 2),
-                        padding:
-                            EdgeInsets.symmetric(horizontal: socialCanPadding),
-                        decoration: BoxDecoration(
-                          color: _ProjectColors().fourth,
-                          borderRadius: BorderRadius.all(
-                              Radius.circular(socialCanRadius)),
-                        ),
-                        child: Row(
-                          children: [
-                            myIconButton10(
-                              icon: _ProjectIcons().google,
-                              iconColor: _ProjectColors().white,
-                            ),
-                            MyVerticalDivider(),
-                            myIconButton10(
-                              icon: _ProjectIcons().facebook,
-                              iconColor: _ProjectColors().white,
-                            ),
-                            MyVerticalDivider(),
-                            myIconButton10(
-                              icon: _ProjectIcons().twitter,
-                              iconColor: _ProjectColors().white,
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Positioned(
-                  top: -30,
-                  child: Container(
-                    alignment: Alignment.center,
-                    height: 50,
-                    width: screenWidth * 0.3,
-                    decoration: BoxDecoration(
-                      color: _ProjectColors().secondary,
-                      borderRadius: BorderRadius.circular(22),
                     ),
-                    child: Text(
-                      _ProjectText().login,
-                      style: TextStyle(
-                          color: _ProjectColors().white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20),
+                    Positioned(
+                      top: -30,
+                      child: Visibility(
+                        visible: !isKeyboard,
+                        child: Container(
+                          alignment: Alignment.center,
+                          height: 50,
+                          width: screenWidth * 0.3,
+                          decoration: BoxDecoration(
+                            color: _ProjectColors().secondary,
+                            borderRadius: BorderRadius.circular(22),
+                          ),
+                          child: Text(
+                            _ProjectText().login,
+                            style: TextStyle(
+                                color: _ProjectColors().white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20),
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
+                  ],
+                )
               ],
-            )
-          ],
-        ),
+            ),
+          )
+        ]),
       ),
     );
   }
