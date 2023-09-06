@@ -3,7 +3,7 @@
 Bu projede Flutter'ı daha iyi öğrenebilmek için uplabs ve behance sitesi üzerinde bulunan giriş sayfalarının tasarımını yaptım. 10 farklı tasarım kullandım.  
 ![loginUIpic](https://github.com/kafur-kanliyelek/login_ui_challenge/assets/77580894/e944a78a-1f76-4387-8f12-594f67119ff4)  
 
-Vereceğim linklerden tasarımlara ulaşabilirsiniz.  
+Bağlantılardan tasarımlara ulaşabilirsiniz.  
 [1.tasarım](https://www.uplabs.com/posts/login-sign-up-and-forgot-passowrd-app-ui-9fb7f736-63e3-4a15-bb23-387946dd9ac2)  
 [2.tasarım](https://www.uplabs.com/posts/login-sign-up-page-fd034340-3332-4401-b8a4-cae8b8124940)  
 [3.tasarım](https://www.uplabs.com/posts/login-sign-up-concept)  
